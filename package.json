@@ -5,15 +5,19 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "report": "vue-cli-service build --report"
   },
   "dependencies": {
     "ajv": "^6.6.2",
     "ajv-keywords": "^2.1.1",
     "axios": "^0.18.0",
     "cube-ui": "~1.12.1",
+    "good-storage": "^1.1.0",
     "imagemin": "^5.0.0",
+    "moment": "^2.23.0",
     "peer": "^0.2.10",
+    "query-string": "^6.2.0",
     "vue": "^2.5.17",
     "webpack": "^4.28.2"
   },
