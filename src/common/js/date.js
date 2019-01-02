@@ -1,6 +1,6 @@
 export function formatDate(date, fmt) {
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
   }
   let o = {
     'M+': date.getMonth() + 1,
@@ -19,5 +19,5 @@ export function formatDate(date, fmt) {
 };
 
 function padLeftZero(str) {
-  return ('00' + str).substr(str.length);
+  return ('00' + str).substr(str.length)
 }
