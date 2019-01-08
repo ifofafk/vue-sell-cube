@@ -1,9 +1,9 @@
+const webpack = require('webpack')
+const path = require('path')
 const appData = require('./data.json')
 const seller = appData.seller
 const goods = appData.goods
 const ratings = appData.ratings
-
-const path = require('path')
 
 /* 项目绝对地址拼接目录 */
 function resolve(dir) {
@@ -53,12 +53,15 @@ module.exports = {
     }
   },
 
-  // 别名，相对路径引用   ~common/
+  // 别名，相对路径引用   ~common webpack过滤掉多余moment本地化包/
 
   chainWebpack(config) {
     config.resolve.alias
       .set('components', resolve('src/components'))
       .set('common', resolve('src/common'))
       .set('api', resolve('src/api'))
+    config.plugin('context')
+      .use(webpack.ContextReplacementPlugin,
+        [/moment[/\\]locale$/, /zh-cn/])
   }
 }
