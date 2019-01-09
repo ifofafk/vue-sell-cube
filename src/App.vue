@@ -60,7 +60,8 @@
       // 额外做了一层_getSeller的封装，再在created里调用
       _getSeller() {
         getSeller().then((seller) => {
-          this.seller = seller
+          this.seller = seller;
+          console.log(seller)
         })
       }
     },

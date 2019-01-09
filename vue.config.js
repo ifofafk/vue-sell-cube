@@ -51,14 +51,6 @@ module.exports = {
   //     })
   //   }
   // },
-  proxyTable: {
-    '/api/**': {
-        target: 'http://localhost:8080',
-        pathRewrite: {
-            '^/api': '/'
-        }
-    }
-  },
 
   // 别名，相对路径引用   ~common; webpack的插件过滤掉多余moment本地化包
   chainWebpack(config) {
