@@ -1,9 +1,9 @@
 const webpack = require('webpack')
 const path = require('path')
-const appData = require('./data.json')
-const seller = appData.seller
-const goods = appData.goods
-const ratings = appData.ratings
+// const appData = require('./data.json')
+// const seller = appData.seller
+// const goods = appData.goods
+// const ratings = appData.ratings
 
 /* 项目绝对地址拼接目录 */
 function resolve(dir) {
@@ -29,32 +29,38 @@ module.exports = {
   },
 
   // 开发模拟数据
-
-  devServer: {
-    before(app) {
-      app.get('/api/seller', function(req, res) {
-        res.json({
-          errno: 0,
-          data: seller
-        })
-      })
-      app.get('/api/goods', function(req, res) {
-        res.json({
-          errno: 0,
-          data: goods
-        })
-      })
-      app.get('/api/ratings', function(req, res) {
-        res.json({
-          errno: 0,
-          data: ratings
-        })
-      })
+  // devServer: {
+  //   before(app) {
+  //     app.get('/api/seller', function(req, res) {
+  //       res.json({
+  //         errno: 0,
+  //         data: seller
+  //       })
+  //     })
+  //     app.get('/api/goods', function(req, res) {
+  //       res.json({
+  //         errno: 0,
+  //         data: goods
+  //       })
+  //     })
+  //     app.get('/api/ratings', function(req, res) {
+  //       res.json({
+  //         errno: 0,
+  //         data: ratings
+  //       })
+  //     })
+  //   }
+  // },
+  proxyTable: {
+    '/api/**': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+            '^/api': '/'
+        }
     }
   },
 
-  // 别名，相对路径引用   ~common; webpack的插件过滤掉多余moment本地化包/
-
+  // 别名，相对路径引用   ~common; webpack的插件过滤掉多余moment本地化包
   chainWebpack(config) {
     config.resolve.alias
       .set('components', resolve('src/components'))
